@@ -14,10 +14,10 @@ import openai
 
 # Authenticate with OpenAI API
 openai.api_type = "azure"
-openai.api_base = 'https://xxxxxxx.openai.azure.com/'
+openai.api_base = 'https://r-openai-illovo.openai.azure.com/'
 openai.api_version = "2023-03-15-preview"
-#openai.api_key = 'xxxxxxxxxxxxxxxxxxxxx'
-openai.api_key = st.secrets['path']
+openai.api_key = 'c2aa17f465c94d25b774191870198f95'
+#openai.api_key = st.secrets['path']
 #model_engine = "text-davinci-002"
 
 
