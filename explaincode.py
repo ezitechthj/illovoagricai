@@ -45,15 +45,15 @@ openai.api_key = 'c2aa17f465c94d25b774191870198f95'
 
 # Define Streamlit app layout
 st.title("Code Explainer")
-language = st.selectbox("Select Language", ["Python", "JavaScript"])
-code_input = st.text_area("Enter code to explain")
+# language = st.selectbox("Select Language", ["Python", "JavaScript"])
+code_input = st.text_area("Enter questionn")
 
 
 
 # Define function to explain code using OpenAI Codex
 def explain_code(input_code, language):
     model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
-    prompt = f"Explain the following {language} code: \n\n{input_code}"
+    #prompt = f"Explain the following {language} code: \n\n{input_code}"
     response = openai.Completion.create(
         engine=model_engine,
         prompt=prompt,
