@@ -78,5 +78,5 @@ tokens = st.sidebar.slider(
 )
 # Define Streamlit app behavior
 if st.button("Submit"):
-    output_text = explain_code(question)
+    output_text = explain_code(input_code)
     st.text_area("Answer", output_text)
