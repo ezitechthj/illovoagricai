@@ -8,6 +8,7 @@ load_dotenv()
 # Set up OpenAI API credentials
 # Set up OpenAI API credentials
 openai.api_type = "azure"
+
 openai.api_base = 'https://r-openai-illovo.openai.azure.com/'
 openai.api_version = "2023-03-15-preview"
 
@@ -23,7 +24,10 @@ openai.api_version = "2023-03-15-preview"
 #Path = '363e5eaaaaaabbbbbccccc'
 #Flow will look like this : projectfolder\streamlit\.streamlit (NOTE MAKE SURE ".streamlit" THIS NEED TO BE IN THE PROJECT FOLDER) 
 #When you call the key within your code use this :  openai.api_key = st.secrets['path']
+
+
 # openai.api_key = st.secrets['path']
+
 
 
 # option#2 : Environmental variable 
@@ -41,17 +45,18 @@ openai.api_key = 'c2aa17f465c94d25b774191870198f95'
 
 # Define Streamlit app layout
 st.title("Code Explainer")
-#language = st.selectbox("Enter question here", ["Python", "JavaScript"])
-question = st.text_area("Enter question")
+language = st.selectbox("Select Language", ["Python", "JavaScript"])
+code_input = st.text_area("Enter code to explain")
 
 
 
 # Define function to explain code using OpenAI Codex
-def explain_code(input_code):
+def explain_code(input_code, language):
     model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
+    prompt = f"Explain the following {language} code: \n\n{input_code}"
     response = openai.Completion.create(
         engine=model_engine,
-        prompt="what is the best soil type for sugarcane",
+        prompt=prompt,
         max_tokens=1024,
         n=1,
         stop=None,
@@ -75,6 +80,7 @@ tokens = st.sidebar.slider(
     step=64
 )
 # Define Streamlit app behavior
-if st.button("Submit"):
-    output_text = explain_code(input_code)
-    st.text_area("Answer",output_text)
+if st.button("Explain"):
+    output_text = explain_code(code_input, language)
+    st.text_area("Code Explanation", output_text)
+
