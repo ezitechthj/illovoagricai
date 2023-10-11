@@ -24,10 +24,7 @@ openai.api_version = "2023-03-15-preview"
 #Path = '363e5eaaaaaabbbbbccccc'
 #Flow will look like this : projectfolder\streamlit\.streamlit (NOTE MAKE SURE ".streamlit" THIS NEED TO BE IN THE PROJECT FOLDER) 
 #When you call the key within your code use this :  openai.api_key = st.secrets['path']
-
-
 # openai.api_key = st.secrets['path']
-
 
 
 # option#2 : Environmental variable 
