@@ -8,7 +8,6 @@ load_dotenv()
 # Set up OpenAI API credentials
 # Set up OpenAI API credentials
 openai.api_type = "azure"
-
 openai.api_base = 'https://r-openai-illovo.openai.azure.com/'
 openai.api_version = "2023-03-15-preview"
 
@@ -50,10 +49,9 @@ question = st.text_area("Enter question")
 # Define function to explain code using OpenAI Codex
 def explain_code(input_code):
     model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
-    #prompt = f"Explain the following {language} code: \n\n{input_code}"
-    response = openai.Completion.create(
+        response = openai.Completion.create(
         engine=model_engine,
-        prompt=question,
+        prompt="what is the best soil type for sugarcane",
         max_tokens=1024,
         n=1,
         stop=None,
@@ -79,4 +77,4 @@ tokens = st.sidebar.slider(
 # Define Streamlit app behavior
 if st.button("Submit"):
     output_text = explain_code(input_code)
-    st.text_area("Answer", output_text)
+    st.text_area("Answer",output_text)
