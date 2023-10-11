@@ -51,7 +51,7 @@ code_input = st.text_area("Enter questionn")
 
 
 # Define function to explain code using OpenAI Codex
-def explain_code(input_code, language):
+def explain_code(input_code):
     model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
     #prompt = f"Explain the following {language} code: \n\n{input_code}"
     response = openai.Completion.create(
@@ -80,6 +80,6 @@ tokens = st.sidebar.slider(
     step=64
 )
 # Define Streamlit app behavior
-if st.button("Explain"):
-    output_text = explain_code(code_input, language)
+if st.button("Submit"):
+    output_text = explain_code(code_input)
     st.text_area("Code Explanation", output_text)
