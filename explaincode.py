@@ -42,8 +42,8 @@ openai.api_key = 'c2aa17f465c94d25b774191870198f95'
 
 # Define Streamlit app layout
 st.title("Code Explainer")
-# language = st.selectbox("Select Language", ["Python", "JavaScript"])
-code_input = st.text_area("Enter questionn")
+#language = st.selectbox("Enter question here", ["Python", "JavaScript"])
+question = st.text_area("Enter question")
 
 
 
@@ -53,7 +53,7 @@ def explain_code(input_code):
     #prompt = f"Explain the following {language} code: \n\n{input_code}"
     response = openai.Completion.create(
         engine=model_engine,
-        prompt=prompt,
+        prompt=question,
         max_tokens=1024,
         n=1,
         stop=None,
@@ -79,4 +79,4 @@ tokens = st.sidebar.slider(
 # Define Streamlit app behavior
 if st.button("Submit"):
     output_text = explain_code(code_input)
-    st.text_area("Code Explanation", output_text)
+    st.text_area("Answer", output_text)
