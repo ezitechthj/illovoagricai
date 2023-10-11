@@ -9,7 +9,7 @@ load_dotenv()
 # Set up OpenAI API credentials
 openai.api_type = "azure"
 
-openai.api_base = 'https://xxxxxx.openai.azure.com/'
+openai.api_base = 'https://r-openai-illovo.openai.azure.com/'
 openai.api_version = "2023-03-15-preview"
 
 #Option # 1 - Using Streamlit secrets
@@ -26,7 +26,7 @@ openai.api_version = "2023-03-15-preview"
 #When you call the key within your code use this :  openai.api_key = st.secrets['path']
 
 
-openai.api_key = st.secrets['path']
+# openai.api_key = st.secrets['path']
 
 
 
@@ -38,7 +38,7 @@ openai.api_key = st.secrets['path']
 #openai.api_key_path = 'key.env'
 
 # option#3 hard code the key 
-#openai.api_key = 'xxxxxxxxxxxxxxxxxxxx'
+openai.api_key = 'c2aa17f465c94d25b774191870198f95'
 
 #CHECK THE BLOG HOW TO HIDE YOUR KEY 
 #"more details you will find in the blog:  "
@@ -52,7 +52,7 @@ code_input = st.text_area("Enter code to explain")
 
 # Define function to explain code using OpenAI Codex
 def explain_code(input_code, language):
-    model_engine = "text-davinci-002" # Change to the desired OpenAI model
+    model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
     prompt = f"Explain the following {language} code: \n\n{input_code}"
     response = openai.Completion.create(
         engine=model_engine,
