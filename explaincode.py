@@ -49,7 +49,7 @@ question = st.text_area("Enter question")
 # Define function to explain code using OpenAI Codex
 def explain_code(input_code):
     model_engine = "gpt-35-turbo" # Change to the desired OpenAI model
-        response = openai.Completion.create(
+    response = openai.Completion.create(
         engine=model_engine,
         prompt="what is the best soil type for sugarcane",
         max_tokens=1024,
